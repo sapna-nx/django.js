@@ -1,0 +1,8 @@
+{% load staticfiles %}
+
+<script>
+    window.DJANGO_INFOS = {
+        STATIC_URL: '{{ STATIC_URL }}',
+        MEDIA_URL: '{{ MEDIA_URL }}',
+    };
+</script>

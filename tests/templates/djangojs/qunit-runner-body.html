@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+<div id="qunit"></div>
+<script src="{% static 'test/libs/qunit.js' %}"></script>
+<script src="{% static 'test/libs/qunit-tap.js' %}"></script>
+<script type="text/javascript">
+    if (navigator.userAgent.indexOf('PhantomJS') != -1) {
+        var logger = function() { console.log.apply(console, arguments); };
+        qunitTap(QUnit, logger, {
+          noPlan: false,
+          showTestNameOnFailure: false,
+          showModuleNameOnFailure:false
+        });
+    }
+</script>
