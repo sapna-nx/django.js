@@ -2,7 +2,7 @@
 '''
 This modules holds every helpers that does not fit in any standard django modules.
 '''
-from __future__ import unicode_literals
+
 
 import logging
 import os

@@ -2,7 +2,7 @@
 '''
 This module provide helper views for javascript.
 '''
-from __future__ import unicode_literals
+
 
 import logging
 

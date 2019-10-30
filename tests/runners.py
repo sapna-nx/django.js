@@ -2,7 +2,7 @@
 '''
 This module provide Javascript test runners for Django unittest.
 '''
-from __future__ import unicode_literals
+
 
 import os
 import re
@@ -142,14 +142,14 @@ class PhantomJsRunner(object):
         if VERBOSE:
             print('')
             print(separator)
-            print(' ' * nb_spaces + title)
+            print((' ' * nb_spaces + title))
             print(separator)
             sys.stdout.flush()
 
         with NamedTemporaryFile(delete=True) as cookies_file:
             cmd = ('node_modules/.bin/phantomjs', '--cookies-file=%s' % cookies_file.name) + args
 
-            print('cmd!!!!!', cmd)
+            print(('cmd!!!!!', cmd))
             if self.timeout:
                 cmd += (str(self.timeout),)
             parser = TapParser(debug=VERBOSITY > 2)
@@ -157,7 +157,7 @@ class PhantomJsRunner(object):
 
             for item in parser.parse(output):
                 if VERBOSE:
-                    print(item.display())
+                    print((item.display()))
                     sys.stdout.flush()
 
         if VERBOSE:
@@ -183,7 +183,7 @@ class PhantomJsRunner(object):
         url = self.get_url()
 
         response = self.client.get(url)
-        print(response.content.decode("utf-8"))
+        print((response.content.decode("utf-8")))
 
         self.phantomjs(self.phantomjs_runner, url, title=self.title)
         self.cleanup()

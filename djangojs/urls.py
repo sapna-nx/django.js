@@ -1,5 +1,5 @@
 
-from django.conf.urls import url
+from django.urls import path
 
 from djangojs.views import UrlsJsonView
 
@@ -7,5 +7,5 @@ from djangojs.views import UrlsJsonView
 app_name = 'djangojs'
 
 urlpatterns = [
-    url(r'^urls\.json$', UrlsJsonView.as_view(), name='urls'),
+    path(r'^urls\.json$', UrlsJsonView.as_view(), name='urls'),
 ]

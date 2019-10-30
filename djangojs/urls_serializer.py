@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 import logging
 import re
@@ -7,7 +7,8 @@ import types
 
 from importlib import import_module
 
-from django.core.urlresolvers import RegexURLPattern, RegexURLResolver, get_script_prefix
+from django.urls import get_script_prefix
+from django.urls.resolvers import URLPattern, URLResolver
 from django.utils import six
 
 from djangojs.conf import settings
@@ -53,9 +54,9 @@ def _get_urls(module, prefix='', namespace=None):
         prefix = get_script_prefix()
 
     for pattern in patterns:
-        if isinstance(pattern, RegexURLPattern):
+        if isinstance(pattern, URLPattern):
             urls.update(_get_urls_for_pattern(pattern, prefix, namespace))
-        elif isinstance(pattern, RegexURLResolver):
+        elif isinstance(pattern, URLResolver):
             urls.update(_get_urls_for_resolver(pattern, prefix, namespace))
         else:
             raise TypeError('Unrecognizd pattern: %s' % pattern)
