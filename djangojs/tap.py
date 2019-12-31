@@ -2,7 +2,7 @@
 '''
 This module provide test runners for JS in Django.
 '''
-from __future__ import unicode_literals
+
 
 import re
 
@@ -55,7 +55,7 @@ class TapGroup(list, TapItem):
     def __str__(self):
         return '# Groupe %s' % self.name
 
-    def __nonzero__(self):
+    def __bool__(self):
         return True
 
     def __bool__(self):
@@ -220,11 +220,11 @@ class TapParser(object):
 
         match = TAP_END_REGEX.match(line.rstrip())
         if match and self.debug:
-            print('# end %s-%s' % (match.group('start'), match.group('end')))
+            print(('# end %s-%s' % (match.group('start'), match.group('end'))))
             return []
 
         if line and self.debug:
-            print('not matched: %s' % line)
+            print(('not matched: %s' % line))
 
         return []
 
